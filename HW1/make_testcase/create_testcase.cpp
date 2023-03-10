@@ -87,6 +87,7 @@ int main() {
     srand(time(NULL));
     // 要生成幾筆測資
     ifstream infile("testcase.txt");
+    // 檔案編號
     int id;
     // 節點數量
     int n;
@@ -98,89 +99,86 @@ int main() {
     int DST_num;
     // 源點數量
     int pair_num;
-    // 流量大小
+    // 流量大小 ， 實測後都約小於75
     int flow_size = 65;
-    int j = 0;
     while(infile >> id >> n >> m >> SDN_num >> DST_num >> pair_num){
-        for(int k = 1; k <= 2; k++){
-            cout << "testcase " << j * 2 + k<< endl;
-            // 寫入檔案
-            ofstream outfile;
-            outfile.open(to_string(j * 2 + k) + ".in");
-            if (!outfile) {
-                cerr << "Cant write file！" << endl;
-                exit(1);
-            }
-            
-            // 產生邊
-            set<pair<int, int>> edges;
-            generate_connected_graph(n, m, edges);
-            
-            outfile << n << " " << SDN_num << " " << DST_num << " " << m << " " << pair_num << endl;
-            
-            // 我每次都把前幾個節點當作SDN節點，所以這邊就不用亂數產生了，因為圖是隨機產生的，所以SDN節點也是隨機的分布在圖中
-            for (int i = 0; i < SDN_num; i++)
-            {   
-                if (i == SDN_num - 1) {
-                    outfile << i << endl;
-                } else {
-                    outfile << i << " ";
-                }
-            }
-            // 接著是DST節點，隨機產生
-            vector<int> save_dst;
-            vector<bool> exist_dst(n, false);
-            for(int i = 0; i < DST_num; i++) {
-                int nnn = rand() % (n);
-                if(exist_dst[nnn]) {
-                    i--;
-                } 
-                else{
-                    exist_dst[nnn] = true;
-                    save_dst.push_back(nnn);
-                    // if (i == DST_num - 1) {
-                    //     outfile << nnn << endl;
-                    // } else {
-                    //     outfile << nnn << " ";
-                    // }
-                }
-            }
-            sort(save_dst.begin(), save_dst.end());
-            for (int i = 0; i < DST_num; i++)
-            {   
-                if (i == DST_num - 1) {
-                    outfile << save_dst[i] << endl;
-                } else {
-                    outfile << save_dst[i] << " ";
-                }
-            }
-            int count = 0;
-            for (auto edge : edges) {
-                outfile << count << ' ' << edge.first << " " << edge.second << endl;
-                count++;
-            }
-
-            // 隨機產生源點，只要不要和DST一樣就好
-            vector<int> save;
-            vector<bool> exist(n, false);
-            for (int i = 0; i < pair_num; i++)
-            {
-                int t = rand() % (n);
-                if(exist[t]) i--;
-                else{
-                    exist[t] = true;
-                    save.push_back(t);
-                }
-            }
-            // 輸出pair
-            for (int i = 0; i < pair_num; i++)
-            {
-                outfile << i << " " << save[i] << ' ' <<save_dst[rand() % (DST_num)]  << ' ' << rand() % flow_size + 10 <<endl;
-            }
-            
-            outfile.close();
+        
+        cout << "testcase " << id << endl;
+        // 寫入檔案
+        ofstream outfile;
+        outfile.open(to_string(id) + ".in");
+        if (!outfile) {
+            cerr << "Cant write file！" << endl;
+            exit(1);
         }
-        j++;
+        
+        // 產生邊
+        set<pair<int, int>> edges;
+        generate_connected_graph(n, m, edges);
+        
+        outfile << n << " " << SDN_num << " " << DST_num << " " << m << " " << pair_num << endl;
+        
+        // 我每次都把前幾個節點當作SDN節點，所以這邊就不用亂數產生了，因為圖是隨機產生的，所以SDN節點也是隨機的分布在圖中
+        for (int i = 0; i < SDN_num; i++)
+        {   
+            if (i == SDN_num - 1) {
+                outfile << i << endl;
+            } else {
+                outfile << i << " ";
+            }
+        }
+        // 接著是DST節點，隨機產生
+        vector<int> save_dst;
+        vector<bool> exist_dst(n, false);
+        for(int i = 0; i < DST_num; i++) {
+            int nnn = rand() % (n);
+            if(exist_dst[nnn]) {
+                i--;
+            } 
+            else{
+                exist_dst[nnn] = true;
+                save_dst.push_back(nnn);
+                // if (i == DST_num - 1) {
+                //     outfile << nnn << endl;
+                // } else {
+                //     outfile << nnn << " ";
+                // }
+            }
+        }
+        sort(save_dst.begin(), save_dst.end());
+        for (int i = 0; i < DST_num; i++)
+        {   
+            if (i == DST_num - 1) {
+                outfile << save_dst[i] << endl;
+            } else {
+                outfile << save_dst[i] << " ";
+            }
+        }
+        int count = 0;
+        for (auto edge : edges) {
+            outfile << count << ' ' << edge.first << " " << edge.second << endl;
+            count++;
+        }
+
+        // 隨機產生源點，只要不要和DST一樣就好
+        vector<int> save;
+        vector<bool> exist(n, false);
+        for (int i = 0; i < pair_num; i++)
+        {
+            int t = rand() % (n);
+            if(exist[t]) i--;
+            else{
+                exist[t] = true;
+                save.push_back(t);
+            }
+        }
+        // 輸出pair
+        for (int i = 0; i < pair_num; i++)
+        {
+            outfile << i << " " << save[i] << ' ' <<save_dst[rand() % (DST_num)]  << ' ' << rand() % flow_size + 10 <<endl;
+        }
+        
+        outfile.close();
     }
     return 0;
 }
