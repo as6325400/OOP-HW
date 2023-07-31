@@ -1,0 +1,34 @@
+time         100                                         srcID          0   dstID 4294967295                                         TRA_ctrl_packet generating
+time         100   recID          0   pktID          0   srcID          0   dstID 4294967295   preID          0   nexID          0   TRA_ctrl_packet counter 0
+time         100   senID          0   pktID          0   srcID          0   dstID 4294967295   preID          0   nexID 4294967295   TRA_ctrl_packet counter 1
+time         110   recID          1   pktID          0   srcID          0   dstID 4294967295   preID          0   nexID 4294967295   TRA_ctrl_packet counter 1
+time         110   recID          2   pktID          0   srcID          0   dstID 4294967295   preID          0   nexID 4294967295   TRA_ctrl_packet counter 1
+time         110   senID          2   pktID          0   srcID          0   dstID 4294967295   preID          2   nexID 4294967295   TRA_ctrl_packet counter 2
+time         110   senID          1   pktID          0   srcID          0   dstID 4294967295   preID          1   nexID 4294967295   TRA_ctrl_packet counter 2
+time         120   recID          4   pktID          0   srcID          0   dstID 4294967295   preID          2   nexID 4294967295   TRA_ctrl_packet counter 2
+time         120   senID          4   pktID          0   srcID          0   dstID 4294967295   preID          4   nexID 4294967295   TRA_ctrl_packet counter 3
+time         120   recID          1   pktID          0   srcID          0   dstID 4294967295   preID          2   nexID 4294967295   TRA_ctrl_packet counter 2
+time         120   recID          0   pktID          0   srcID          0   dstID 4294967295   preID          2   nexID 4294967295   TRA_ctrl_packet counter 2
+time         120   recID          0   pktID          0   srcID          0   dstID 4294967295   preID          1   nexID 4294967295   TRA_ctrl_packet counter 2
+time         120   recID          3   pktID          0   srcID          0   dstID 4294967295   preID          1   nexID 4294967295   TRA_ctrl_packet counter 2
+time         120   senID          3   pktID          0   srcID          0   dstID 4294967295   preID          3   nexID 4294967295   TRA_ctrl_packet counter 3
+time         120   recID          2   pktID          0   srcID          0   dstID 4294967295   preID          1   nexID 4294967295   TRA_ctrl_packet counter 2
+time         130   recID          1   pktID          0   srcID          0   dstID 4294967295   preID          3   nexID 4294967295   TRA_ctrl_packet counter 3
+time         130   recID          2   pktID          0   srcID          0   dstID 4294967295   preID          4   nexID 4294967295   TRA_ctrl_packet counter 3
+time         200                                         srcID          4   dstID          0                                         TRA_data_packet generating
+time         200   recID          4   pktID          1   srcID          4   dstID          0   preID          4   nexID          4   TRA_data_packet
+time         200   senID          4   pktID          1   srcID          4   dstID          0   preID          4   nexID          2   TRA_data_packet
+time         210   recID          2   pktID          1   srcID          4   dstID          0   preID          4   nexID          2   TRA_data_packet
+time         210   senID          2   pktID          1   srcID          4   dstID          0   preID          2   nexID          0   TRA_data_packet
+time         220   recID          0   pktID          1   srcID          4   dstID          0   preID          2   nexID          0   TRA_data_packet
+0
+0 0
+1
+0 0
+2
+0 0
+3
+0 1
+4
+0 2
+

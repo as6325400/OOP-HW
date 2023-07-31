@@ -1,2 +1,5 @@
 .vscode/
-HW1_private/
+*.exe
+*.out
+*.in
+*.out
